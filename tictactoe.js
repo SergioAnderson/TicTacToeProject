@@ -1,14 +1,24 @@
-var cellone = document.querySelector("#one")
-var celltwo = document.querySelector("#two")
-var cellthree = document.querySelector("#three")
-var cellfour = document.querySelector("#four")
-var cellfive = document.querySelector("#five")
-var cellsix = document.querySelector("#six")
-var cellseven = document.querySelector("#seven")
-var celleight = document.querySelector("#eight")
-var cellnine = document.querySelector("#nine")
-var letters = ['X', 'O', '']
+let restartButton = document.querySelector("#Button");
+let squares = document.querySelectorAll("td");
 
-cellone.addEventListener("click", function (){
-    cellone.textContent = "X"
-})
+function changeMarker(){
+    if (this.textContent === "") {
+        this.textContent = "X"
+    } else if (this.textContent === "X") {
+        this.textContent = "O"
+    } else {
+        this.textContent = ""
+    }
+}
+
+function clearBoard() {
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].textContent = ""
+    }
+}
+
+restartButton.addEventListener("click", clearBoard)
+
+for (let i = 0; i < squares.length; i++){
+    squares[i].addEventListener("click", changeMarker)
+}
